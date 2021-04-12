@@ -1,0 +1,109 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+		{% if title %}
+            	<title>Questionee - {{ title }}</title>
+        {% else %}
+			<title>Questionee - Question Bank</title>
+        {% endif %}
+
+	<!-- Meta Tags -->
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="author" content="me.israfil.xyz">
+	<meta name="description" content="Solve previous year questions and take the best preparation before exam">
+
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="{% static 'bank/images/favicon.png' %}">
+
+	<!-- Google Font -->
+	<link href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&amp;family=Rubik:wght@400;500;700&amp;family=Spartan:wght@400;700;900&amp;display=swap" rel="stylesheet">
+
+	<!-- Plugins CSS -->
+	<link rel="stylesheet" type="text/css" href="{% static 'bank/vendor/font-awesome/css/all.min.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'bank/vendor/tiny-slider/tiny-slider.css' %}">
+
+	<!-- Theme CSS -->
+	<link rel="stylesheet" type="text/css" href="{% static 'bank/css/style.css' %}">
+	<link rel="stylesheet" type="text/css" href="{% static 'bank/css/landing.css' %}">
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=G-REQ7KBZ56G"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'G-REQ7KBZ56G');
+	</script>
+
+</head>
+
+<body>
+<!-- =======================
+Header START -->
+<header class="navbar-light navbar-transparent">
+	<!-- Logo Nav START -->
+	<nav class="navbar px-0">
+		<div class="container">
+			<!-- Logo START -->
+			<a class="navbar-brand me-0" href="{% url 'home' %}">
+				<!-- Logo SVG Code -->
+				<img src="{% static 'bank/images/favicon.png' %}"  height="40" alt="">
+			</a>
+			<!-- Logo END -->
+
+			<!-- Nav START -->
+			<div class="nav ms-0 ms-md-5 me-md-auto flex-row align-items-center">
+				<div class="nav-item d-none d-sm-block"> <a href="{% url 'home' %}" class="nav-link">Home</a></div>
+				<div class="nav-item d-none d-sm-block"> <a href="#" class="nav-link">About Us</a></div>
+				<div class="nav-item"> <a href="#" target="_blank" class="nav-link">Support</a></div>
+				<!-- Nav Button -->
+				{% if user.is_authenticated %}
+				<div class="nav-item">
+					<a href="{% url 'my-courses' %}"  class="btn btn-sm btn-primary mb-0 ms-2">My Courses</a>
+				</div>
+				<div class="nav-item"> <a href="{% url 'logout' %}" class="nav-link">Logout</a></div>
+				{% else %}
+				<div class="nav-item">
+					<a href="{% url 'login' %}"  class="btn btn-sm btn-primary mb-0 ms-2">Login</a>
+				</div>
+				{% endif %}
+			</div>
+			<!-- Nav END -->
+		</div>
+	</nav>
+	<!-- Logo Nav END -->
+</header>
+{% block content %} {% endblock content %}
+
+<!-- Custom cursor -->
+<div class="cursor-dot-outline"></div>
+<div class="cursor-dot"></div>
+
+<!-- Back to top -->
+<div class="back-top">
+	<div class="scroll-line"></div>
+	<span class="scoll-text">Go Up</span>
+</div>
+
+<!-- =======================
+JavaScripts -->
+
+<!-- Bootstrap JS -->
+<script src="{% static 'bank/vendor/bootstrap/dist/js/bootstrap.bundle.min.js' %}"></script>
+
+<!-- Vendors -->
+<script src="{% static 'bank/vendor/tiny-slider/tiny-slider.js' %}"></script>
+
+<!-- Template Functions -->
+<script src="{% static 'bank/js/functions.js' %}"></script>
+
+
+</body>
+
+</html>

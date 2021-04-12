@@ -1,0 +1,42 @@
+{% extends "bank/base.html" %}
+{% load crispy_forms_tags %}
+{% block content %}
+    <section class="bg-light pattern-overlay-7 pb-0 pb-xl-8 h-lg-700 h-xl-800 d-flex align-items-center">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-9 col-lg-7 col-xl-6">
+				<div class="h-100 mt-5 position-relative z-index-9">
+					<h2 class="text-primary">Login</h2>
+					<div class="mb-5">
+						<form class="form-horizontal" role="form" method="POST">
+							{% csrf_token %}
+							{{ form|crispy }}
+							<div class="form-group">
+							<div class="checkbox">
+								<label>
+								Dont have an account?                    <a href="{% url 'register' %}"><strong> Sign up</strong></a>
+								</label>
+							</div>
+							<div class="checkbox">
+								<label>
+								Forgot Your Password?                    <a href="{% url 'password_reset' %}"><strong> Click Here</strong></a>
+								</label>
+							</div>
+							</div>
+							<div class="form-group">
+								<button type="submit" class="btn btn-primary">
+									Login                    </button>
+							</div>
+						</form>
+
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+
+
+	</div>
+</section>
+{% endblock content %}

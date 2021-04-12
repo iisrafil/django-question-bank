@@ -1,0 +1,48 @@
+{% extends "bank/base.html" %}
+{% block content %}
+<main>
+<section class="bg-light  pattern-overlay-6">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8 mx-auto text-center mb-5">
+				<h2>{{ title }}</h2>
+			</div>
+		</div>
+		{% if courses %}
+		<div class="row text-center mb-5">
+			{% for course in courses %}
+			<div class="col-6 col-sm-4 col-md-3 col-lg-2 text-center mb-30">
+				<a class="p-4 bg-white shadow-hover line-draw-animation w-100 h-100 text-dark d-inline-block text-primary-hover" href="#">
+					<div class="line-draw-inner"><i class="d-block w-100 text-center display-9 opacity-3 mb-3 far fa-plus-square fa-fw me-2">{{ course.my_course.course_code }}</i>{{ course.my_course.course_name }}</div>
+				</a>
+			</div>
+			{% endfor %}
+		</div>
+		{% else %}
+		<p class="text-center text-primary">No Course Found</p>
+		{% endif %}
+	</div>
+</section>
+	<div class="row justify-content-center">
+			<div class="col text-center">
+				{% if courses.has_previous %}
+					<a class="btn btn-outline-primary mb-4" href="?page=1">First</a>
+					<a class="btn btn-outline-primary mb-4" href="?page={{ posts.previous_page_number }}">Previous</a>
+			  	{% endif %}
+
+			  	{% for num in courses.paginator.page_range %}
+					{% if courses.number == num %}
+				  	<a class="btn btn-primary mb-4" href="?page={{ num }}">{{ num }}</a>
+					{% elif num > courses.number|add:'-3' and num < courses.number|add:'3' %}
+				  	<a class="btn btn-outline-primary mb-4" href="?page={{ num }}">{{ num }}</a>
+					{% endif %}
+			  	{% endfor %}
+
+			  	{% if courses.has_next %}
+				<a class="btn btn-outline-primary mb-4" href="?page={{ courses.next_page_number }}">Next</a>
+				<a class="btn btn-outline-primary mb-4" href="?page={{ courses.paginator.num_pages }}">Last</a>
+			  	{% endif %}
+			</div>
+		</div>
+</main>
+{% endblock content %}
