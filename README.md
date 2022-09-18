@@ -21,7 +21,7 @@
 # Clone secrets and fablib repositories
 
 ```sh
-git clone git@github.com:NUKnightLab/secrets.git
+git clone https://github.com/iisrafil/django-question-bank.git
 ```
 
 # Change into project directory
